@@ -54,7 +54,7 @@ create docker network.
 
 ```bash
 $ docker network create web
-docker network ls
+$ docker network ls
 NETWORK ID          NAME                                                   DRIVER              SCOPE
 ...
 b60d5a9be68d        web       
@@ -63,7 +63,7 @@ b60d5a9be68d        web
 ### Running a local Datadog Agent
 
 ```bash
-docker run -d --name dd-agent \
+$ docker run -d --name dd-agent \
   --network web \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -v /proc/:/host/proc/:ro \
@@ -80,7 +80,7 @@ docker run -d --name dd-agent \
   -e NON_LOCAL_TRAFFIC=false \
   gcr.io/datadoghq/agent:latest
 
-docker ps -a
+$ docker ps -a
 CONTAINER ID        IMAGE                           COMMAND             CREATED             STATUS                    PORTS                                            NAMES
 8545f6d5534f        gcr.io/datadoghq/agent:latest   "/init"             45 minutes ago      Up 45 minutes (healthy)   0.0.0.0:8125->8125/udp, 0.0.0.0:8126->8126/tcp   dd-agent
 ```
